@@ -60,7 +60,7 @@ class RequestUtilities {
    * @param {*} responseDataType 
    * @returns Promise<ArrayBuffer|Blob|FormData|object|string>
    */
-  static async extractResponseData(response, responseDataType) {
+  static extractResponseData(response, responseDataType) {
     switch (responseDataType) {
       case 'arrayBuffer': {
         return response.arrayBuffer();
@@ -78,7 +78,7 @@ class RequestUtilities {
         return response.text();
       }
       default:
-        return undefined;
+        throw new Error(`The response data type provided (${responseDataType}) is invalid and therefore the response data cannot be extracted.`);
     }
   }
 

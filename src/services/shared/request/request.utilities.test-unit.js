@@ -1,5 +1,9 @@
 import RequestUtilities from './request.utilities';
 
+/**
+ * Fetch Options Build
+ * Suite in charge of testing the the Fetch Request Options Build with default and custom values.
+ */
 describe('Fetch Options Build', () => {
   beforeAll(() => { });
 
@@ -68,5 +72,87 @@ describe('Fetch Options Build', () => {
       body: fetchBody
     });
     expect(JSON.stringify(fetchBody)).toEqual(options.body);
+  });
+});
+
+
+
+
+
+/**
+ * Fetch Response Data Extraction
+ * Suite in charge of building the promise that extracts the fetch response data.
+ */
+function setupResponseDataObj() {
+  return {
+    arrayBuffer: jest.fn(),
+    blob: jest.fn(),
+    formData: jest.fn(),
+    json: jest.fn(),
+    text: jest.fn(),
+  };
+}
+describe('Fetch Response Data Extraction', () => {
+  beforeAll(() => { });
+
+  afterAll(() => { });
+
+  beforeEach(() => { });
+
+  afterEach(() => { });
+
+  test('can extract an arrayBuffer from the response', () => {
+    const res = setupResponseDataObj();
+    RequestUtilities.extractResponseData(res, 'arrayBuffer');
+    expect(res.arrayBuffer).toHaveBeenCalled();
+    expect(res.blob).not.toHaveBeenCalled();
+    expect(res.formData).not.toHaveBeenCalled();
+    expect(res.json).not.toHaveBeenCalled();
+    expect(res.text).not.toHaveBeenCalled();
+  });
+
+  test('can extract a blob from the response', () => {
+    const res = setupResponseDataObj();
+    RequestUtilities.extractResponseData(res, 'blob');
+    expect(res.arrayBuffer).not.toHaveBeenCalled();
+    expect(res.blob).toHaveBeenCalled();
+    expect(res.formData).not.toHaveBeenCalled();
+    expect(res.json).not.toHaveBeenCalled();
+    expect(res.text).not.toHaveBeenCalled();
+  });
+
+  test('can extract a formData from the response', () => {
+    const res = setupResponseDataObj();
+    RequestUtilities.extractResponseData(res, 'formData');
+    expect(res.arrayBuffer).not.toHaveBeenCalled();
+    expect(res.blob).not.toHaveBeenCalled();
+    expect(res.formData).toHaveBeenCalled();
+    expect(res.json).not.toHaveBeenCalled();
+    expect(res.text).not.toHaveBeenCalled();
+  });
+
+  test('can extract a json from the response', () => {
+    const res = setupResponseDataObj();
+    RequestUtilities.extractResponseData(res, 'json');
+    expect(res.arrayBuffer).not.toHaveBeenCalled();
+    expect(res.blob).not.toHaveBeenCalled();
+    expect(res.formData).not.toHaveBeenCalled();
+    expect(res.json).toHaveBeenCalled();
+    expect(res.text).not.toHaveBeenCalled();
+  });
+
+  test('can extract a text from the response', () => {
+    const res = setupResponseDataObj();
+    RequestUtilities.extractResponseData(res, 'text');
+    expect(res.arrayBuffer).not.toHaveBeenCalled();
+    expect(res.blob).not.toHaveBeenCalled();
+    expect(res.formData).not.toHaveBeenCalled();
+    expect(res.json).not.toHaveBeenCalled();
+    expect(res.text).toHaveBeenCalled();
+  });
+
+  test('throws an error if an invalid data type is provided', () => {
+    const res = setupResponseDataObj();
+    expect(() => { RequestUtilities.extractResponseData(res) }).toThrow();
   });
 });
