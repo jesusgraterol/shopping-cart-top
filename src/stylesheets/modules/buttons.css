@@ -1,0 +1,277 @@
+/*
+ * Buttons
+ * The purpose of this stylesheet is to define how all the different buttons will look and behave
+ * when interacted with.
+ */
+
+
+/* *****************
+ * STANDARD BUTTON *
+ ***************** */
+.btn {
+  background-color: transparent;
+  border: none;
+  color: var(--text-color);
+  padding: 15px 30px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight:bold;
+}
+.btn > .md-icon {
+  margin-right: 5px;
+}
+
+
+
+
+/* *************
+ * ICON BUTTON *
+ ************* */
+.icon-btn {
+  background-color: transparent;
+  border: none;
+  color: var(--text-color);
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+/* ***************
+ * BUTTON STATES *
+ *************** */
+
+/* Focus Outline Reset */
+.icon-btn:focus,
+.btn:focus {
+  outline: none;
+}
+
+/* Disabled */
+.icon-btn:disabled,
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Hover & Focus */
+.icon-btn:hover:not(:disabled),
+.icon-btn:focus:not(:disabled),
+.btn:hover:not(:disabled),
+.btn:focus:not(:disabled) {
+  background-color: var(--app-background-contrast-color);
+}
+
+/* Active */
+.icon-btn:active:not(:disabled),
+.btn:active:not(:disabled) {
+  transform: scale(0.92)
+}
+
+
+
+
+
+/* ******************
+ * COLOR VARIATIONS *
+ ****************** */
+
+/* Primary Button */
+.btn.primary {
+  color:white;
+  background-color: var(--primary-color);
+}
+.btn.primary:hover:not(:disabled),
+.btn.primary:focus:not(:disabled) { 
+  background-color: var(--primary-contrast-color);
+}
+
+/* Accent Button */
+.btn.accent {
+  color:white;
+  background-color: var(--accent-color);
+}
+.btn.accent:hover:not(:disabled),
+.btn.accent:focus:not(:disabled) { 
+  background-color: var(--accent-contrast-color);
+}
+
+/* Primary Icon Button */
+.icon-btn.primary {
+  color:white;
+  background-color: var(--primary-color);
+}
+.icon-btn.primary:hover:not(:disabled),
+.icon-btn.primary:focus:not(:disabled) { 
+  background-color: var(--primary-contrast-color);
+}
+
+/* Primary Icon Button Fab */
+.icon-btn.primary.fab {
+  padding: 15px;
+}
+
+/* Raised Button */
+.btn.raised,
+.icon-btn.raised {
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 1px 8px 0 rgba(0,0,0,0.20);
+}
+
+
+
+
+
+/* **************************
+ * RESPONSIVE MEDIA QUERIES *
+ ************************** */
+
+/*
+ * DEVICE: Desktops
+ * SCREEN: 1281px to higher resolution desktops
+ */
+@media (min-width: 1281px) {
+
+}
+
+
+
+
+
+/*
+* DEVICE: Laptops, Desktops
+* SCREEN: B/w 1025px to 1280px
+*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+  /* *********
+   * BUTTONS *
+   ********* */
+
+  /* Standard Button */
+  .btn {
+    padding: 12px 24px;
+  }
+
+}
+
+
+
+
+
+/*
+* DEVICE: Tablets, Ipads (portrait)
+* SCREEN: B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* *********
+   * BUTTONS *
+   ********* */
+
+  /* Standard Button */
+  .btn {
+    padding: 10px 20px;
+  }
+  /* Icon Button */
+  .icon-btn {
+    padding: 9px;
+  }
+  /* Primary Icon Button Fab */
+  .icon-btn.primary.fab {
+    padding: 14px;
+  }
+
+}
+
+
+
+
+
+/*
+* DEVICE: Tablets, Ipads (landscape)
+* SCREEN: B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  /* *********
+   * BUTTONS *
+   ********* */
+
+  /* Standard Button */
+  .btn {
+    padding: 10px 20px;
+  }
+  /* Icon Button */
+  .icon-btn {
+    padding: 9px;
+  }
+  /* Primary Icon Button Fab */
+  .icon-btn.primary.fab {
+    padding: 14px;
+  }
+
+}
+
+
+
+
+
+/*
+* DEVICE: Low Resolution Tablets, Mobiles (Landscape)
+* SCREEN: B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+  /* *********
+   * BUTTONS *
+   ********* */
+
+  /* Standard Button */
+  .btn {
+    padding: 9px 18px;
+  }
+  /* Icon Button */
+  .icon-btn {
+    padding: 8px;
+  }
+  /* Primary Icon Button Fab */
+  .icon-btn.primary.fab {
+    padding: 12px;
+  }
+
+}
+
+
+
+
+
+/*
+* DEVICE: Most of the Smartphones Mobiles (Portrait)
+* SCREEN: 480px to lower resolution mobiles
+*/
+@media (max-width: 480px) {
+  /* *********
+   * BUTTONS *
+   ********* */
+
+  /* Standard Button */
+  .btn {
+    padding: 8px 16px;
+  }
+  /* Icon Button */
+  .icon-btn {
+    padding: 7px;
+  }
+  /* Primary Icon Button Fab */
+  .icon-btn.primary.fab {
+    padding: 10px;
+  }
+
+}

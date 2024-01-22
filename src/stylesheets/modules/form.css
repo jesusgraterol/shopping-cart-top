@@ -1,0 +1,93 @@
+.form {
+    
+}
+
+.form .form-row {
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* Form Control */
+.form .form-row .form-control {
+    padding: 5px 0;
+    flex: 1;
+}
+.form .form-row .form-control input,
+.form .form-row .form-control textarea {
+    width: 100%;
+    border:0px;
+    background-color: inherit;
+    border-bottom: 1px solid var(--primary-color);
+    padding:7px;
+}
+
+.form .form-row .form-control textarea {
+    resize: vertical;
+}
+
+.form .form-row .form-control input:focus,
+.form .form-row .form-control input:active,
+.form .form-row .form-control textarea:focus,
+.form .form-row .form-control textarea:active {
+    outline: none;
+    border-bottom: 2px solid var(--primary-color);
+    margin-bottom: -2px;
+}
+.form .form-row .form-control label {
+    display: block;
+}
+.form .form-row .form-control label:focus-within { font-weight: bold;}
+
+
+
+/* Select Input*/
+.form .form-row .form-control select {
+    margin: 0;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 10px 1em 0 0;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    border-bottom: 1px solid var(--primary-color);
+}
+.form .form-row .form-control select:focus,
+.form .form-row .form-control select:active {
+    outline: none;
+    border-bottom: 2px solid var(--primary-color);
+    margin-bottom: -2px;
+}
+
+
+/* Form Control Error */
+.form .form-row .form-control .error-color {
+    color: var(--error-color);
+}
+.form .form-row .form-control input.errored,
+.form .form-row .form-control textarea.errored { 
+    border-bottom: 2px solid var(--error-color);
+    margin-bottom: -2px;
+}
+.form .form-row .form-control .error {
+
+}
+.form .form-row .form-control .error .md-icon {vertical-align: middle;font-size:1rem;}
+.form .form-row .form-control .error {
+    font-size: 0.9rem;
+    color: var(--error-color);
+    margin-top:5px;
+    visibility: hidden;
+}
+
+
+
+
+/* Form Submission */
+.form button {
+    margin-top:15px;
+}

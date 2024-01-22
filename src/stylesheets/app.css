@@ -1,0 +1,226 @@
+/* **********
+ * IMPORTS  *
+ ********** */
+
+/* Reset */
+@import url('modules/reset.css');
+
+/* Font */
+@import url('modules/fonts.css');
+
+/* Material Icons */
+@import url('modules/material-icons.css');
+
+/* Utilities */
+@import url('modules/utilities.css');
+
+/* Typography */
+@import url('modules/typography.css');
+
+/* Buttons */
+@import url('modules/buttons.css');
+
+/* Anchors */
+@import url('modules/anchors.css');
+
+/* Form */
+@import url('modules/form.css');
+
+/* Dialog */
+@import url('modules/dialog.css');
+
+
+
+/* **********
+ * GLOBALS  *
+ ********** */
+:root {
+  --primary-color: #212121;
+  --primary-contrast-color: #000000;
+  --accent-color: #212121;
+  --accent-contrast-color: #000000;
+
+  --success-color: #0f766e;
+  --error-color: #991b1b;
+
+  --text-color: #1f1d1d;
+  --light-text-color: #696161;
+
+  --app-background-color: #f7f1f1;
+  --app-background-contrast-color: #e7e0e0;
+
+  --font-size: 16px;
+  font-size: var(--font-size);
+}
+
+
+
+
+/* *************
+ * TEXT COLORS *
+ ************* */
+.primary-color { color: var(--primary-color) }
+.accent-color { color: var(--accent-color) }
+.success-color { color: var(--success-color) }
+.error-color { color: var(--error-color) }
+.text-color { color: var(--text-color) }
+.light-text-color { color: var(--light-text-color) }
+
+
+
+
+
+/* *****************
+ * HORIZONTAL RULE *
+ ***************** */
+hr { 
+  border-top: 1px solid var(--light-text-color);
+  margin: 30px 0;
+  border-radius: 5px;
+}
+
+
+
+
+/* *******
+ * LISTS *
+ ******* */
+ul, ol {
+  margin: 0;
+}
+ul li, ol li {
+  margin: 15px 0;
+}
+
+
+
+/* ********
+ * STRONG *
+ ******** */
+strong {
+  font-weight: bold;
+}
+
+
+
+
+
+/* ***********
+ * SEPARATOR *
+ *********** */
+.separator {
+  flex:1;
+}
+
+
+
+
+
+/* ****************
+ * ROOT CONTAINER *
+ **************** */
+html {
+  scroll-behavior: smooth;
+}
+
+
+
+
+/* ******
+ * BODY *
+ ****** */
+body {
+  font-family: "Montserrat", "Roboto", sans-serif;
+  background-color: var(--app-background-color);
+  color: var(--text-color);
+  overflow-y: scroll;
+}
+body:has(dialog) {
+  overflow-y: hidden;
+}
+
+
+
+/* ***************
+ * APP CONTAINER *
+ *************** */
+#appContainer {
+  width:100%;
+  overflow-x: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* **************************
+ * RESPONSIVE MEDIA QUERIES *
+ ************************** */
+
+/*
+ * DEVICE: Desktops
+ * SCREEN: 1281px to higher resolution desktops
+ */
+@media (min-width: 1281px) {
+
+}
+
+
+
+
+
+/*
+* DEVICE: Laptops, Desktops
+* SCREEN: B/w 1025px to 1280px
+*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+
+}
+
+
+
+
+
+/*
+* DEVICE: Tablets, Ipads (portrait)
+* SCREEN: B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+
+}
+
+
+
+
+/*
+* DEVICE: Low Resolution Tablets, Mobiles (Landscape)
+* SCREEN: B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+
+}
+
+
+
+
+
+/*
+* DEVICE: Most of the Smartphones Mobiles (Portrait)
+* SCREEN: 480px to lower resolution mobiles
+*/
+@media (max-width: 480px) {
+
+
+}

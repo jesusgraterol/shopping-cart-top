@@ -1,0 +1,159 @@
+/*
+ * Typography
+ * The purpose of this stylesheet is to define how the textual content will behave as well as its
+ * responsiveness.
+ */
+
+
+
+/* **********
+ * HEADINGS *
+ ********** */
+h1{ font-size: 2.4rem; }
+h2{ font-size: 2.0rem; }
+h3{ font-size: 1.8rem; }
+h4{ font-size: 1.6rem; }
+h5{ font-size: 1.4rem; }
+h6{ font-size: 1.2rem; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0;
+}
+
+h1 strong, h2 strong, h3 strong, h4 strong, h5 strong, h6 strong {
+  font-weight: 900;
+}
+
+
+
+
+/* ************
+ * PARAGRAPHS *
+ ************ */
+p {
+  font-size: 1rem;
+  margin: 15px 0;
+}
+p strong {
+  font-weight: 900;
+}
+
+
+
+
+/* **************************
+ * RESPONSIVE MEDIA QUERIES *
+ ************************** */
+
+/*
+ * DEVICE: Desktops
+ * SCREEN: 1281px to higher resolution desktops
+ */
+@media (min-width: 1281px) {
+
+}
+
+
+
+
+
+/*
+* DEVICE: Laptops, Desktops
+* SCREEN: B/w 1025px to 1280px
+*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+  /* **********
+  * HEADINGS *
+  ********** */
+  h1{ font-size: 2.3rem; }
+  h2{ font-size: 2.05rem; }
+  h3{ font-size: 1.85rem; }
+  h4{ font-size: 1.6rem; }
+  h5{ font-size: 1.4rem; }
+  h6{ font-size: 1.2rem; }
+
+}
+
+
+
+
+
+/*
+* DEVICE: Tablets, Ipads (portrait)
+* SCREEN: B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* **********
+  * HEADINGS *
+  ********** */
+  h1{ font-size: 2.2rem; }
+  h2{ font-size: 1.85rem; }
+  h3{ font-size: 1.65rem; }
+  h4{ font-size: 1.45rem; }
+  h5{ font-size: 1.3rem; }
+  h6{ font-size: 1.15rem; }
+
+}
+
+
+
+
+
+/*
+* DEVICE: Tablets, Ipads (landscape)
+* SCREEN: B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+  /* **********
+   * HEADINGS *
+   ********** */
+  h1{ font-size: 2.2rem; }
+  h2{ font-size: 1.85rem; }
+  h3{ font-size: 1.65rem; }
+  h4{ font-size: 1.45rem; }
+  h5{ font-size: 1.3rem; }
+  h6{ font-size: 1.15rem; }
+
+}
+
+
+
+
+
+/*
+* DEVICE: Low Resolution Tablets, Mobiles (Landscape)
+* SCREEN: B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+  /* **********
+   * HEADINGS *
+   ********** */
+  h1{ font-size: 2.2rem; }
+  h2{ font-size: 1.85rem; }
+  h3{ font-size: 1.65rem; }
+  h4{ font-size: 1.45rem; }
+  h5{ font-size: 1.3rem; }
+  h6{ font-size: 1.15rem; }
+
+}
+
+
+
+
+
+/*
+* DEVICE: Most of the Smartphones Mobiles (Portrait)
+* SCREEN: 480px to lower resolution mobiles
+*/
+@media (max-width: 480px) {
+  /* **********
+   * HEADINGS *
+   ********** */
+  h1{ font-size: 2.0rem; }
+  h2{ font-size: 1.70rem; }
+  h3{ font-size: 1.55rem; }
+  h4{ font-size: 1.4rem; }
+  h5{ font-size: 1.25rem; }
+  h6{ font-size: 1.1rem; }
+
+}

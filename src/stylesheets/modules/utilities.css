@@ -1,0 +1,35 @@
+/*
+ * Utilities 
+ * The goal of this stylesheet is to provide a series of commonly used helpers.
+ */
+
+
+
+
+/* **************
+ * Misc Helpers *
+ ************** */
+
+/* Text Truncator */
+.truncate { white-space: nowrap;overflow: hidden;text-overflow: ellipsis;}
+
+/* Full Width */
+.full-width { width: 100%; }
+
+
+
+
+
+/* ************
+ * Animations *
+ ************ */
+
+/* Fade In */
+@keyframes fadein { 
+  0% { 
+    opacity:0 
+  } 
+  100%{ 
+    opacity:1 
+  } 
+}
