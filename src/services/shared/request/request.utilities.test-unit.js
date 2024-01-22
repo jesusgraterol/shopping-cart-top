@@ -153,6 +153,53 @@ describe('Fetch Response Data Extraction', () => {
 
   test('throws an error if an invalid data type is provided', () => {
     const res = setupResponseDataObj();
-    expect(() => { RequestUtilities.extractResponseData(res) }).toThrow();
+    expect(() => RequestUtilities.extractResponseData(res)).toThrow();
+  });
+});
+
+
+
+
+/**
+ * Error Handling
+ * Suite in charge of testing the request response validations.
+ */
+describe('Fetch Request Response Validation', () => {
+  beforeAll(() => { });
+
+  afterAll(() => { });
+
+  beforeEach(() => { });
+
+  afterEach(() => { });
+
+  test('does not throw if the response is valid (1)', () => {
+    expect(() => {
+      RequestUtilities.validateRequestResponse({ ok: true, status: 200 }, 200)
+    }).not.toThrow();
+  });
+
+  test('does not throw if the response is valid (2)', () => {
+    expect(() => {
+      RequestUtilities.validateRequestResponse({ ok: true, status: 201 }, 201)
+    }).not.toThrow();
+  });
+
+  test('throws if the response is not ok (1)', () => {
+    expect(() => {
+      RequestUtilities.validateRequestResponse({ ok: false, status: 200 }, 200)
+    }).toThrow('Request Failed: received response code 200 when it expected 200.');
+  });
+
+  test('throws if the response is not ok (2)', () => {
+    expect(() => {
+      RequestUtilities.validateRequestResponse({ ok: true, status: 200 }, 201)
+    }).toThrow('Request Failed: received response code 200 when it expected 201.');
+  });
+
+  test('throws if the response is not ok (3)', () => {
+    expect(() => {
+      RequestUtilities.validateRequestResponse({ ok: false, status: 404 }, 200)
+    }).toThrow('Request Failed: received response code 404 when it expected 200.');
   });
 });
