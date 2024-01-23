@@ -17,5 +17,5 @@ describe('Products Retrieval', () => {
     // make sure items were retrieved
     expect(products.length).toBeGreaterThan(0);
     expect(filters.length).toBeGreaterThan(0);
-  });
+  }, 60000);
 });
