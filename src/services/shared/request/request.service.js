@@ -9,22 +9,17 @@ class RequestService {
   /**
    * Executes an HTTP GET Request and validates its response.
    * @param {*} url 
-   * @param {?} fetchOptions 
-   * @param {?} expectedResponseCode 
-   * @param {?} responseDataType 
-   * @param {?} retryAttempts 
-   * @param {?} retryDelaySeconds 
+   * @param {?} config
    * @returns Promise<{ response: Response, data: any }>
    */
-  static get(
-    url, 
+  static get(url, {
     fetchOptions = undefined, 
     expectedResponseCode = 200, 
     responseDataType = 'json', 
     retryAttempts = 0, 
     retryDelaySeconds = 3
-  ) {
-    return RequestService.#sendRequest(
+  } = {}) {
+    return RequestService.send(
       url, 
       RequestUtilities.buildFetchOptions({ ...fetchOptions, method: 'GET' }),
       expectedResponseCode,
@@ -35,6 +30,8 @@ class RequestService {
   }
 
   
+
+
 
   /* *******************
    * REQUEST PROCESSOR *
@@ -50,7 +47,7 @@ class RequestService {
    * @param {*} retryDelaySeconds 
    * @returns Promise<{ response: Response, data: any }>
    */
-  static async #sendRequest(
+  static async send(
     url, 
     fetchOptions, 
     expectedResponseCode, 
@@ -58,8 +55,9 @@ class RequestService {
     retryAttempts, 
     retryDelaySeconds
   ) {
+    console.log('IM IN THE REAL SEND');
     try {
-      return await RequestService.#_sendRequest(
+      return await RequestService.#_send(
         url,
         fetchOptions,
         expectedResponseCode,
@@ -69,7 +67,7 @@ class RequestService {
       // check if the request can be retried. If so, do it after a delay
       if (retryAttempts > 0) {
         await Utilities.delay(retryDelaySeconds);
-        return RequestService.#sendRequest(
+        return RequestService.send(
           url, 
           fetchOptions,
           expectedResponseCode,
@@ -83,7 +81,7 @@ class RequestService {
       throw e;
     }
   }
-  static async #_sendRequest(url, fetchOptions, expectedResponseCode, responseDataType) {
+  static async #_send(url, fetchOptions, expectedResponseCode, responseDataType) {
     // execute the request
     const response = await fetch(url, fetchOptions);
 

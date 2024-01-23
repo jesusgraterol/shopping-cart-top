@@ -97,7 +97,6 @@ class RequestUtilities {
    */
   static validateRequestResponse(response, expectedResponseCode) {
     if (!response || !response.ok || response.status !== expectedResponseCode) {
-      console.error(response);
       throw new Error(RequestUtilities.#buildRequestErrorMessage(response, expectedResponseCode));
     }
   }
