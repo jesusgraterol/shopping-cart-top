@@ -3,7 +3,15 @@ import RequestUtilities from './request.utilities.js';
 
 /**
  * Request Service
- * Service in charge of performing HTTP Requests.
+ * Service in charge of performing HTTP Requests. This class wraps the Fetch API and was based on:
+ * - https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
+ * - https://developer.mozilla.org/en-US/docs/Web/API/fetch
+ * - https://developer.mozilla.org/en-US/docs/Web/API/Headers
+ * - https://developer.mozilla.org/en-US/docs/Web/API/Request
+ * - https://developer.mozilla.org/en-US/docs/Web/API/Response
+ * - https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+ * - https://web.dev/articles/introduction-to-fetch
+ * - https://www.freecodecamp.org/news/how-to-fetch-data-from-an-api-using-the-fetch-api-in-javascript/
  */
 class RequestService {
   /**
@@ -19,7 +27,7 @@ class RequestService {
     retryAttempts = 0, 
     retryDelaySeconds = 3
   } = {}) {
-    return RequestService.send(
+    return RequestService._send(
       url, 
       RequestUtilities.buildFetchOptions({ ...fetchOptions, method: 'GET' }),
       expectedResponseCode,
@@ -46,8 +54,11 @@ class RequestService {
    * @param {*} retryAttempts 
    * @param {*} retryDelaySeconds 
    * @returns Promise<{ response: Response, data: any }>
+   * IMPORTANT: This method is supposed to be named #send and be private. Unfortunately, Jest does
+   * not support mocking this kind of function and it had to be renamed so testing could be performed
+   * properly.
    */
-  static async send(
+  static async _send(
     url, 
     fetchOptions, 
     expectedResponseCode, 
@@ -55,9 +66,8 @@ class RequestService {
     retryAttempts, 
     retryDelaySeconds
   ) {
-    console.log('IM IN THE REAL SEND');
     try {
-      return await RequestService.#_send(
+      return await RequestService._executeSend(
         url,
         fetchOptions,
         expectedResponseCode,
@@ -67,7 +77,7 @@ class RequestService {
       // check if the request can be retried. If so, do it after a delay
       if (retryAttempts > 0) {
         await Utilities.delay(retryDelaySeconds);
-        return RequestService.send(
+        return RequestService._send(
           url, 
           fetchOptions,
           expectedResponseCode,
@@ -81,7 +91,7 @@ class RequestService {
       throw e;
     }
   }
-  static async #_send(url, fetchOptions, expectedResponseCode, responseDataType) {
+  static async _executeSend(url, fetchOptions, expectedResponseCode, responseDataType) {
     // execute the request
     const response = await fetch(url, fetchOptions);
 
