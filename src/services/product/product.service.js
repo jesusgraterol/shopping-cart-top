@@ -15,12 +15,12 @@ class ProductService {
    */
   static async listProductsAndFilters() {
     // extract the list of products from the API
-    const { data } = await ProductService._listProducts();
-
+    const products = await ProductService._listProducts();
+    
     // return the products and the filters
     return { 
-      products: data,
-      filters: ProductService.#listFilters(data)
+      products: products,
+      filters: ProductService.#listFilters(products)
     }
   }
 
@@ -31,8 +31,11 @@ class ProductService {
    * Jest does not support mocking this kind of function and it had to be renamed so testing could 
    * be performed properly.
    */
-  static _listProducts() {
-    return RequestService.get(`${ProductService.#BASE_PATH}/products`, { retryAttempts: 3 });
+  static async _listProducts() {
+    const { data } = await RequestService.get(`${ProductService.#BASE_PATH}/products`, { 
+      retryAttempts: 3 
+    });
+    return data;
   }
 
   /**

@@ -24,7 +24,7 @@ describe('HTTP GET Requests', () => {
     expect(typeof data).toBe('object');
     expect(data.method).toBe('GET');
     expect(data.url).toBe(url);
-  });
+  }, 10000);
 
   test('can send an HTTP GET request with params', async () => {
     const url = 'https://httpbin.org/anything';
@@ -36,5 +36,5 @@ describe('HTTP GET Requests', () => {
     expect(data.args.baz == paramsObj.baz).toBe(true);
     expect(data.args.jeez == paramsObj.jeez).toBe(true);
     expect(data.args.mate == String(paramsObj.mate)).toBe(true);
-  });
+  }, 10000);
 });
