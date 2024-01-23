@@ -35,7 +35,7 @@ class RequestUtilities {
   /**
    * Builds the request's body value based on the provided type.
    * @param {*} body 
-   * @returns string
+   * @returns string|undefined
    */
   static #buildFetchOptionsBody(body) {
     if (body && typeof body === 'object') {
@@ -43,7 +43,7 @@ class RequestUtilities {
     } else if (typeof body === 'string') {
       return body;
     } else {
-      return '';
+      return undefined;
     }
   }
 

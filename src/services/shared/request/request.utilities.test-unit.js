@@ -27,7 +27,7 @@ describe('Fetch Options Build', () => {
       signal: undefined,
       integrity: undefined,
       keepalive: false,
-      body: ''
+      body: undefined
     };
     expect(defaultOptions).toEqual(RequestUtilities.buildFetchOptions());
     expect(defaultOptions).toEqual(RequestUtilities.buildFetchOptions({ method: 'GET'}));
