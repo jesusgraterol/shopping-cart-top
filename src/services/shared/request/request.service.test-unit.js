@@ -14,16 +14,26 @@ describe('HTTP Request', () => {
 
   afterEach(() => {  });
 
-  test('can send a request', async () => {
-    const executeSendFN = jest.spyOn(RequestService, '_executeSend').mockImplementation();
-    await RequestService._send(
+  test('can send a request (1)', async () => {
+    const fetchFN = jest.spyOn(global, 'fetch').mockImplementation(() => ({
+      ok: true,
+      status: 200,
+      json: () => Promise.resolve({})
+    }));
+    await RequestService.get('somePath', { expectedResponseCode: 200 });
+    expect(fetchFN).toHaveBeenCalledWith(
       'somePath',
       RequestUtilities.buildFetchOptions({ method: 'GET' }),
-      200,
-      'json',
-      0,
-      3
     );
+    fetchFN.mockRestore();
+  });
+
+  test('can send a request (2)', async () => {
+    const executeSendFN = jest.spyOn(RequestService, '_executeSend').mockImplementation();
+    await RequestService.get('somePath', {
+      expectedResponseCode: 200, 
+      responseDataType: 'json', 
+    });
     expect(executeSendFN).toHaveBeenCalledWith(
       'somePath',
       RequestUtilities.buildFetchOptions({ method: 'GET' }),
@@ -33,18 +43,23 @@ describe('HTTP Request', () => {
     executeSendFN.mockRestore();
   });
 
-  test('can send a request and fail gracefully', async () => {
+  test('can send a request and fail gracefully (1)', async () => {
+    const fetchFN = jest.spyOn(global, 'fetch').mockImplementation(() => ({
+      ok: false,
+      status: 404,
+    }));
+    await expect(RequestService.get('somePath', { 
+      expectedResponseCode: 200 
+    })).rejects.toThrow('Request Failed: received response code 404 when it expected 200.');
+    expect(fetchFN).toHaveBeenCalledTimes(1);
+    fetchFN.mockRestore();
+  });
+
+  test('can send a request and fail gracefully (2)', async () => {
     const executeSendFN = jest.spyOn(RequestService, '_executeSend').mockImplementation(() => {
       throw new Error('BAD Request');
     });
-    await expect(RequestService._send(
-      'somePath',
-      RequestUtilities.buildFetchOptions({ method: 'GET' }),
-      200,
-      'json',
-      0,
-      3
-    )).rejects.toThrow('BAD Request'); 
+    await expect(RequestService.get('somePath')).rejects.toThrow('BAD Request'); 
     expect(executeSendFN).toHaveBeenCalledTimes(1);
     executeSendFN.mockRestore();
   });
@@ -53,14 +68,10 @@ describe('HTTP Request', () => {
     const executeSendFN = jest.spyOn(RequestService, '_executeSend').mockImplementation(() => {
       throw new Error('BAD Request');
     });
-    await expect(RequestService._send(
-      'somePath',
-      RequestUtilities.buildFetchOptions({ method: 'GET' }),
-      200,
-      'json',
-      3,
-      0
-    )).rejects.toThrow('BAD Request'); 
+    await expect(RequestService.get('somePath', { 
+      retryAttempts: 3, 
+      retryDelaySeconds: 0
+    })).rejects.toThrow('BAD Request'); 
     expect(executeSendFN).toHaveBeenCalledTimes(1 + 3); // original request + 3 retry attempts
     executeSendFN.mockRestore();
   });
