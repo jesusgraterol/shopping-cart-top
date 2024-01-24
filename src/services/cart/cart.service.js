@@ -21,17 +21,14 @@ class CartService {
    ********* */
 
   static get totalQuantity() {
-    if (!CartService.#record) CartService.#initializeRecord();
     return CartService.#record.totalQuantity;
   }
 
   static get totalAmount() {
-    if (!CartService.#record) CartService.#initializeRecord();
     return CartService.#record.totalAmount;
   }
 
   static get items() {
-    if (!CartService.#record) CartService.#initializeRecord();
     return Object.values(CartService.#record.items);
   }
 
@@ -166,7 +163,7 @@ class CartService {
    * Initializes the cart record in case it hasn't been. If no data is found in the db, it builds
    * the default record object.
    */
-  static #initializeRecord() {
+  static initializeRecord() {
     if (!CartService.#record) {
       CartService.#record = Database.read(CartService.#DB_KEY) || CartService.#buildDefaultRecord();
     }
@@ -200,6 +197,12 @@ class CartService {
   }
 }
 
+
+
+/**
+ * Initialize the Cart Record
+ */
+CartService.initializeRecord();
 
 
 
