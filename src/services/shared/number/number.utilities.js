@@ -1,5 +1,8 @@
 import BigNumber from 'bignumber.js';
 
+// attempt to avoid exponential notation
+BigNumber.config({ EXPONENTIAL_AT: 1e+9 })
+
 /**
  * Number Utilities
  * Provides a series of robust functions to handle numbers and operations.
@@ -44,7 +47,6 @@ class NumberUtilities {
     fractionGroupSize = 0, // grouping size of the fraction part
     suffix = '' // string to append
   } = {}) {
-    // build the config
     const { decimalPlaces, roundingMode } = NumberUtilities.#buildNumberConfig(partialNumberConfig);
     return NumberUtilities.getBigNumber(value).toFormat(decimalPlaces, roundingMode, {
       prefix,
