@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Sidenav from './sidenav.component';
 
 /**
@@ -6,6 +7,7 @@ import Sidenav from './sidenav.component';
  * ...
  */
 function HeaderNav() { 
+  const navigate =  useNavigate();
   const [ sidenavVisible, setSidenavVisible ] = useState(false);
 
 
@@ -31,15 +33,15 @@ function HeaderNav() {
       <nav>
 
         {/* Desktop Navigation */}
-        <button className="btn primary">
+        <button className="btn primary" onClick={() => navigate('/shopping-cart-top/')}>
           <span className="md-icon" aria-hidden="true">home</span>
           Home
         </button>
-        <button className="btn primary">
+        <button className="btn primary" onClick={() => navigate('/shopping-cart-top/products')}>
           <span className="md-icon" aria-hidden="true">grid_view</span>
           Products
         </button>
-        <button className="btn primary">
+        <button className="btn primary" onClick={() => navigate('/shopping-cart-top/cart')}>
           <span className="button-badge">0</span>
           <span className="md-icon" aria-hidden="true">shopping_cart</span>
           Cart
