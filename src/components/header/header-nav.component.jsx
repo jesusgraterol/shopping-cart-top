@@ -1,5 +1,7 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+//import { useLocation } from 'react-router-dom';
+import useActiveRoute from '../../hooks/active-route/active-route.hook';
+import useNavigateApp from '../../hooks/navigate-app/navigate-app.hook';
 import Sidenav from './sidenav.component';
 
 /**
@@ -7,8 +9,18 @@ import Sidenav from './sidenav.component';
  * ...
  */
 function HeaderNav() { 
-  const navigate =  useNavigate();
+  const navigate =  useNavigateApp();
+  //const location = useLocation();
+  //const [ activeRoute, setActiveRoute ] = useState('');
+  const activeRoute = useActiveRoute();
   const [ sidenavVisible, setSidenavVisible ] = useState(false);
+
+
+
+  // ensure the sidenav is closed whenever the route changes
+  useEffect(() => {
+      setSidenavVisible(false);
+  }, [ activeRoute ]);
 
 
 
@@ -33,15 +45,21 @@ function HeaderNav() {
       <nav>
 
         {/* Desktop Navigation */}
-        <button className="btn primary" onClick={() => navigate('/shopping-cart-top/')}>
+        <button className="btn primary" 
+                onClick={() => navigate('')} 
+                disabled={activeRoute === ''}>
           <span className="md-icon" aria-hidden="true">home</span>
           Home
         </button>
-        <button className="btn primary" onClick={() => navigate('/shopping-cart-top/products')}>
+        <button className="btn primary" 
+                onClick={() => navigate('products')} 
+                disabled={activeRoute === 'products'}>
           <span className="md-icon" aria-hidden="true">grid_view</span>
           Products
         </button>
-        <button className="btn primary" onClick={() => navigate('/shopping-cart-top/cart')}>
+        <button className="btn primary" 
+                onClick={() => navigate('cart')} 
+                disabled={activeRoute === 'cart'}>
           <span className="button-badge">0</span>
           <span className="md-icon" aria-hidden="true">shopping_cart</span>
           Cart
@@ -60,9 +78,13 @@ function HeaderNav() {
 
       </nav>
 
-      <Sidenav  sidenavVisible={sidenavVisible} 
-                toggleSidenavVisibility={toggleSidenavVisibility}
-                handleSourceCodeClick={handleSourceCodeClick} />
+      {/* Mobile Sidenav */}
+      {sidenavVisible && (
+        <Sidenav  activeRoute={activeRoute} 
+                  toggleSidenavVisibility={toggleSidenavVisibility} 
+                  handleSourceCodeClick={handleSourceCodeClick} />
+      )}
+
     </>
   );
 }
