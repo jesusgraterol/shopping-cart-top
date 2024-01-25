@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-//import { useLocation } from 'react-router-dom';
 import useActiveRoute from '../../hooks/active-route/active-route.hook';
 import useNavigateApp from '../../hooks/navigate-app/navigate-app.hook';
 import Sidenav from './sidenav.component';
@@ -10,8 +9,6 @@ import Sidenav from './sidenav.component';
  */
 function HeaderNav() { 
   const navigate =  useNavigateApp();
-  //const location = useLocation();
-  //const [ activeRoute, setActiveRoute ] = useState('');
   const activeRoute = useActiveRoute();
   const [ sidenavVisible, setSidenavVisible ] = useState(false);
 

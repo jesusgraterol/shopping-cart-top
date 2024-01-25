@@ -16,7 +16,7 @@ function Router() {
       path: '/shopping-cart-top/',
       element: <App />,
       children: [
-        { index: true, element: <Home /> },
+        { index: true, element: <Home />, },
         { path: 'products', element: <Products /> },
         { path: 'productDetails/:id', element: <ProductDetails /> },
         { path: 'cart', element: <Cart /> },
