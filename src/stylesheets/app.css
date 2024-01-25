@@ -51,6 +51,9 @@
 
   --font-size: 16px;
   font-size: var(--font-size);
+
+  --app-header-height: 85px;
+  --app-header-height-mobile: 65px;
 }
 
 
@@ -105,10 +108,10 @@ strong {
 
 
 
-/* ***********
- * SEPARATOR *
- *********** */
-.separator {
+/* ****************
+ * FLEX SEPARATOR *
+ **************** */
+.flex-separator {
   flex:1;
 }
 
@@ -133,7 +136,10 @@ body {
   font-family: "Montserrat", "Roboto", sans-serif;
   background-color: var(--app-background-color);
   color: var(--text-color);
-  overflow-y: scroll;
+  overflow-y: auto;
+  overflow-x: hidden;
+  width: 100%;
+  height:100%;
 }
 body:has(dialog) {
   overflow-y: hidden;
@@ -145,20 +151,107 @@ body:has(dialog) {
  * APP CONTAINER *
  *************** */
 #appContainer {
-  width:100%;
-  overflow-x: hidden;
+  min-height:100%;
+}
+
+
+
+/* **************
+ * BUTTON BADGE *
+ ************** */
+.button-badge {
+  background-color: #474343;
+  color:white;
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size:0.7rem;
+  font-weight: bold;
+}
+
+
+
+
+/* ************
+ * APP HEADER *
+ ************ */
+#appContainer > header {
+  background-color: var(--primary-color);
+  box-shadow: 0 6px 10px 0 rgba(0,0,0,0.14), 0 1px 18px 0 rgba(0,0,0,0.12), 0 3px 5px -1px rgba(0,0,0,0.20);
+  padding:15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: var(--app-header-height);
+}
+
+#appContainer > header img {
+  max-width: 200px;
+}
+
+#appContainer > header nav {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+#appContainer > header nav .btn .button-badge {
+  position: absolute;
+  top:3px;
+  right: 3px;
+}
+
+#appContainer > header nav .icon-btn {
+  display:none;
 }
 
 
 
 
 
+/* *********
+ * SIDENAV *
+ ********* */
+.sidenav-container {
+  width: 100%;
+  height:100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index:2;
+  display: flex;
+  justify-content: flex-end;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 
+.sidenav-container > section {
+  width: 270px;
+  background-color: #FFFFFF;
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 1px 8px 0 rgba(0,0,0,0.20);
+  height: 100%;
+  animation: 0.5s sidenav-slide-left alternate;
+}
+@keyframes sidenav-slide-left {
+  from { transform: translateX(540px)}
+  to { transform: translateX(0) }
+}
 
+.sidenav-container > section > header {
+  display:flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 10px;
+}
 
+.sidenav-container > section > header h2 {
+  margin: 0;
+}
 
-
-
+.sidenav-container > section > ul li .btn {
+  width: 100%;
+  justify-content: flex-start;
+}
 
 
 
@@ -199,6 +292,23 @@ body:has(dialog) {
 @media (min-width: 768px) and (max-width: 1024px) {
 
 
+
+  /* ************
+   * APP HEADER *
+   ************ */
+   #appContainer > header {
+    padding:15px;
+    height: var(--app-header-height-mobile);
+  }
+  #appContainer > header img {
+    max-width: 170px;
+  }
+  #appContainer > header nav .btn {
+    display:none;
+  }
+  #appContainer > header nav .icon-btn {
+    display:flex;
+  }
 }
 
 
@@ -210,6 +320,23 @@ body:has(dialog) {
 */
 @media (min-width: 481px) and (max-width: 767px) {
 
+
+  /* ************
+   * APP HEADER *
+   ************ */
+   #appContainer > header {
+    padding:15px;
+    height: var(--app-header-height-mobile);
+  }
+  #appContainer > header img {
+    max-width: 170px;
+  }
+  #appContainer > header nav .btn {
+    display:none;
+  }
+  #appContainer > header nav .icon-btn {
+    display:flex;
+  }
 }
 
 
@@ -221,6 +348,23 @@ body:has(dialog) {
 * SCREEN: 480px to lower resolution mobiles
 */
 @media (max-width: 480px) {
+
+  /* ************
+   * APP HEADER *
+   ************ */
+  #appContainer > header {
+    padding:15px;
+    height: var(--app-header-height-mobile);
+  }
+  #appContainer > header img {
+    max-width: 170px;
+  }
+  #appContainer > header nav .btn {
+    display:none;
+  }
+  #appContainer > header nav .icon-btn {
+    display:flex;
+  }
 
 
 }

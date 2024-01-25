@@ -20,6 +20,7 @@
   justify-content: center;
   align-items: center;
   font-weight:bold;
+  position: relative;
 }
 .btn > .md-icon {
   margin-right: 5px;
@@ -43,6 +44,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 

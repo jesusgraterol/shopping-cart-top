@@ -24,6 +24,7 @@ describe('Cart Initialization', () => {
 
   test('can initialize the cart through the getter functions', () => {
     expect(CartService.totalQuantity).toBe(0);
+    expect(CartService.prettyTotalQuantity).toEqual('0');
     expect(CartService.totalAmount).toBe(0);
     expect(CartService.items).toEqual([]);
   });
@@ -52,12 +53,14 @@ describe('Cart Actions', () => {
 
     CartService.add(products[0]);
     expect(CartService.totalQuantity).toBe(1);
+    expect(CartService.prettyTotalQuantity).toEqual('1');
     expect(CartService.totalAmount).toBe(products[0].price);
     items.push({ quantity: 1, amount: products[0].price, product: products[0]});
     expect(CartService.items).toEqual(items);
 
     CartService.add(products[1]);
     expect(CartService.totalQuantity).toBe(2);
+    expect(CartService.prettyTotalQuantity).toEqual('2');
     expect(CartService.totalAmount).toBe(NumberUtilities.calculateSum(
       [products[0].price, products[1].price]
     ));
@@ -67,6 +70,7 @@ describe('Cart Actions', () => {
 
     CartService.add(products[2]);
     expect(CartService.totalQuantity).toBe(3);
+    expect(CartService.prettyTotalQuantity).toEqual('3');
     expect(CartService.totalAmount).toBe(NumberUtilities.calculateSum(
       [products[0].price, products[1].price, products[2].price]
     ));
@@ -88,6 +92,7 @@ describe('Cart Actions', () => {
     CartService.add(products[2]);
 
     expect(CartService.totalQuantity).toBe(3);
+    expect(CartService.prettyTotalQuantity).toEqual('3');
     expect(CartService.totalAmount).toBe(NumberUtilities.calculateSum(products.map((p) => p.price)));
 
     CartService.increaseQuantity(products[1].id);
@@ -101,6 +106,7 @@ describe('Cart Actions', () => {
     expect(increasedItem.amount).toBe(increasedProductAmount);
 
     expect(CartService.totalQuantity).toBe(5);
+    expect(CartService.prettyTotalQuantity).toEqual('5');
     expect(CartService.totalAmount).toBe(NumberUtilities.calculateSum(
       [
         increasedProductAmount, 
@@ -149,6 +155,7 @@ describe('Cart Actions', () => {
     expect(decreasedItem.amount).toBe(decreasedItemAmount);
 
     expect(CartService.totalQuantity).toBe(4);
+    expect(CartService.prettyTotalQuantity).toEqual('4');
     expect(CartService.totalAmount).toBe(NumberUtilities.calculateSum(
       [
         decreasedItemAmount, 
@@ -180,6 +187,7 @@ describe('Cart Actions', () => {
 
     CartService.add(products[0]);
     expect(CartService.totalQuantity).toBe(1);
+    expect(CartService.prettyTotalQuantity).toEqual('1');
     expect(CartService.totalAmount).toBe(products[0].price);
     expect(CartService.items).toEqual([
       { quantity: 1, amount: products[0].price, product: products[0] },
@@ -187,6 +195,7 @@ describe('Cart Actions', () => {
 
     CartService.delete(products[0].id);
     expect(CartService.totalQuantity).toBe(0);
+    expect(CartService.prettyTotalQuantity).toEqual('0');
     expect(CartService.totalAmount).toBe(0);
     expect(CartService.items).toEqual([]);
   });
@@ -214,12 +223,29 @@ describe('Cart Actions', () => {
     CartService.delete(products[2].id);
 
     expect(CartService.totalQuantity).toBe(0);
+    expect(CartService.prettyTotalQuantity).toEqual('0');
     expect(CartService.totalAmount).toBe(0);
     expect(CartService.items).toEqual([]);
   });
 
   test('cannot delete an item that has not yet been added', () => {
     expect(() => CartService.delete(MOCK_PRODUCTS[0].id)).toThrow();
+  });
+
+  test('can display the proper pretty total quantity when there are more than 9 items in the cart', () => {
+    const products = MOCK_PRODUCTS.slice(0, 1);
+    CartService.add(products[0]);
+    CartService.increaseQuantity(products[0].id);
+    CartService.increaseQuantity(products[0].id);
+    CartService.increaseQuantity(products[0].id);
+    CartService.increaseQuantity(products[0].id);
+    CartService.increaseQuantity(products[0].id);
+    CartService.increaseQuantity(products[0].id);
+    CartService.increaseQuantity(products[0].id);
+    CartService.increaseQuantity(products[0].id);
+    CartService.increaseQuantity(products[0].id);
+
+    expect(CartService.prettyTotalQuantity).toEqual('9+');
   });
 });
 

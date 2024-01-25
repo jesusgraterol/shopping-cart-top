@@ -24,6 +24,10 @@ class CartService {
     return CartService.#record.totalQuantity;
   }
 
+  static get prettyTotalQuantity() {
+    return CartService.#record.totalQuantity > 9 ? '9+' : String(CartService.#record.totalQuantity);
+  }
+
   static get totalAmount() {
     return CartService.#record.totalAmount;
   }

@@ -54,7 +54,6 @@ describe('Cart Interactions', () => {
     // retrieve the db record and ensure the data is valid
     dbRecord = Database.read(DB_KEY);
     const items = CartService.items;
-    expect(dbRecord).toBeTruthy(); 
     expect(dbRecord).toEqual({
       totalQuantity: CartService.totalQuantity,
       totalAmount: CartService.totalAmount,
