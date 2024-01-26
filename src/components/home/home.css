@@ -3,7 +3,7 @@
 }
 
 #homeContainer .splash-container {
-  background-image: url('./splash.jpg');
+  background-image: url('/splash.jpg');
   background-size: cover;
   background-position: center;
   position:relative;
