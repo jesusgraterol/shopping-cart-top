@@ -12,19 +12,27 @@ function ProductModal({ product, setModal }) {
 
   return (
     <Modal closeModal={handleCloseModal}>
+
       <header>
+
         <h2>{ProductService.prettifyAmount(product.price)}</h2>
+
         <button className="icon-btn" aria-label="Close Modal" onClick={handleCloseModal}>
           <span aria-hidden="true" className="md-icon">close</span>
         </button>
+
       </header>
+
       <article className="product-modal-details">
+
         <img src={product.image} alt={product.title} />
 
         <h2>{product.title}</h2>
 
         <p>{product.description}</p>
+        
       </article>
+
     </Modal>
   );
 }

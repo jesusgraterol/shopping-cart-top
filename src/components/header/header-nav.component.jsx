@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import useActiveRoute from '../../hooks/active-route/active-route.hook';
 import useNavigateApp from '../../hooks/navigate-app/navigate-app.hook';
+import { CartContext } from '../../context/cart/cart.context';
 import Sidenav from './sidenav.component';
 
 /**
@@ -11,7 +12,7 @@ function HeaderNav() {
   const navigate =  useNavigateApp();
   const activeRoute = useActiveRoute();
   const [ sidenavVisible, setSidenavVisible ] = useState(false);
-
+  const { prettyTotalQuantity } = useContext(CartContext);
 
 
   // ensure the sidenav is closed whenever the route changes
@@ -57,7 +58,7 @@ function HeaderNav() {
         <button className="btn primary" 
                 onClick={() => navigate('cart')} 
                 disabled={activeRoute === 'cart'}>
-          <span className="button-badge">0</span>
+          <span className="button-badge">{prettyTotalQuantity}</span>
           <span className="md-icon" aria-hidden="true">shopping_cart</span>
           Cart
         </button>

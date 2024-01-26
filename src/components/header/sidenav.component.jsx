@@ -1,5 +1,7 @@
+import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import useNavigateApp from '../../hooks/navigate-app/navigate-app.hook';
+import { CartContext } from '../../context/cart/cart.context';
 
 
 /**
@@ -8,10 +10,12 @@ import useNavigateApp from '../../hooks/navigate-app/navigate-app.hook';
  */
 function Sidenav({ activeRoute, toggleSidenavVisibility, handleSourceCodeClick }) {
   const navigate =  useNavigateApp();
+  const { prettyTotalQuantity } = useContext(CartContext);
 
 
   return (
     <div className="sidenav-container">
+
       <section>
         
         <header>
@@ -50,7 +54,7 @@ function Sidenav({ activeRoute, toggleSidenavVisibility, handleSourceCodeClick }
               <span className="md-icon" aria-hidden="true">shopping_cart</span>
               Cart
               <span className='flex-separator'></span>
-              <span className="button-badge">0</span>
+              <span className="button-badge">{prettyTotalQuantity}</span>
             </button>
           </li>
           <li>
@@ -62,6 +66,7 @@ function Sidenav({ activeRoute, toggleSidenavVisibility, handleSourceCodeClick }
         </ul>
 
       </section>
+      
     </div>
   );
 }

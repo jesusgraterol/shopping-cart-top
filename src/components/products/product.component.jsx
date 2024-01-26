@@ -1,9 +1,11 @@
 
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import Utilities from '../../services/shared/utilities/utilities.js';
 import ProductService from '../../services/product/product.service.js';
+import CartService from '../../services/cart/cart.service.js';
 import ProductModal from './product-modal.component.jsx';
+import { CartDispatchContext } from '../../context/cart/cart.context.jsx';
 
 /**
  * Product Component
@@ -11,6 +13,21 @@ import ProductModal from './product-modal.component.jsx';
  */
 function Product({ product }) {
   const [modal, setModal] = useState(false);
+  const [ inCart, setInCart ] = useState(CartService.isProductInCart(product.id))
+  const dispatch = useContext(CartDispatchContext);
+
+
+  const handleAddToCartClick = () => {
+    CartService.add(product);
+    dispatch({
+      type: 'cart_changed',
+      totalQuantity: CartService.totalQuantity,
+      prettyTotalQuantity: CartService.prettyTotalQuantity,
+      totalAmount: CartService.totalAmount,
+      items: CartService.items
+    });
+    setInCart(true);
+  }
 
   
   const handleMoreInfoClick = () => setModal(true);
@@ -29,7 +46,9 @@ function Product({ product }) {
 
         <span className="flex-separator"></span>
 
-        <button className="btn primary">Add to cart</button>
+        <button className="btn primary" onClick={handleAddToCartClick} disabled={inCart}>
+          Add to cart
+        </button>
 
         <button className="btn" onClick={handleMoreInfoClick}>More info</button>
 

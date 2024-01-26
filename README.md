@@ -105,7 +105,7 @@ $ npm run test:unit
 $ npm run test:integration
 
 # E2E Tests
-$ npm run test:e2e
+N/A
 ```
 
 
