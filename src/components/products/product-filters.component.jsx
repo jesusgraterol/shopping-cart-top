@@ -20,8 +20,11 @@ function ProductFilters({ filterList, activeFilter, handleFilterClick, disabled 
 
   return (
     <div className="dropdown-menu">
-      <button className="icon-btn primary" disabled={disabled} onClick={handleFilterExpandClick}>
-        <span className="md-icon">{expanded ? 'close' : 'filter_alt'}</span>
+      <button className="icon-btn accent" 
+              disabled={disabled} 
+              onClick={handleFilterExpandClick} 
+              aria-label="Filter Products">
+        <span className="md-icon" aria-hidden="true">{expanded ? 'close' : 'filter_alt'}</span>
       </button>
       {expanded && (
         <div className="dropdown-menu-content">

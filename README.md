@@ -140,4 +140,5 @@ $ npm run test:e2e
 - [Vite](https://vitejs.dev/)
 - [React](https://react.dev/)
 - [prop-types](https://github.com/facebook/prop-types)
+- [bignumber.js](https://github.com/MikeMcl/bignumber.js)
 - [Unsplash/@rupixen](https://unsplash.com/photos/person-using-laptop-computer-holding-card-Q59HmzK38eQ)

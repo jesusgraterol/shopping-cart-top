@@ -2,6 +2,10 @@ import ProductService from './product.service';
 import { MOCK_PRODUCTS } from './test-data';
 
 
+/**
+ * Products Retrieval
+ * Suite in charge of testing the retrieval of products and filters.
+ */
 describe('Products Retrieval', () => {
   beforeAll(() => { });
 
@@ -31,7 +35,29 @@ describe('Products Retrieval', () => {
     // clear the mock
     listProductsFN.mockRestore();
   });
+});
 
+
+
+
+
+/**
+ * Misc Helpers
+ * Suite in charge of testing the misc helpers in the service
+ */
+describe('Misc Helpers', () => {
+  beforeAll(() => { });
+
+  afterAll(() => { });
+
+  beforeEach(() => { });
+
+  afterEach(() => { });
+
+
+  test('can prettify a dollar amount', () => {
+    expect(ProductService.prettifyAmount(7194556.3681)).toBe('$7,194,556.37');
+  });
 
   test('can filter a list of given products based on any category', () => {
     // all products
@@ -143,5 +169,4 @@ describe('Products Retrieval', () => {
       },
     ]);
   });
-
 });

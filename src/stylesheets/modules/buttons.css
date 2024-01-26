@@ -124,6 +124,21 @@
   padding: 15px;
 }
 
+/* Accent Icon Button */
+.icon-btn.accent {
+  color:white;
+  background-color: var(--accent-color);
+}
+.icon-btn.accent:hover:not(:disabled),
+.icon-btn.accent:focus:not(:disabled) { 
+  background-color: var(--accent-contrast-color);
+}
+
+/* Accent Icon Button Fab */
+.icon-btn.accent.fab {
+  padding: 15px;
+}
+
 /* Raised Button */
 .btn.raised,
 .icon-btn.raised {

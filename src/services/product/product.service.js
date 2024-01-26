@@ -1,4 +1,5 @@
 import Utilities from '../shared/utilities/utilities.js';
+import NumberUtilities from '../shared/number/number.utilities.js';
 import RequestService from '../shared/request/request.service.js';
 
 /**
@@ -25,24 +26,6 @@ class ProductService {
   }
 
   /**
-   * Filters a list of products based on the active filter.
-   * @param {*} products 
-   * @param {*} filter 
-   * @returns IProduct[]
-   */
-  static filterProducts(products, filter) {
-    if (Array.isArray(products)) {
-      if (filter === 'All') {
-        return products;
-      } else {
-        return products.filter((p) => p.category.toLowerCase() === filter.toLowerCase());
-      }
-    } else {
-      return [];
-    }
-  }
-
-  /**
    * Retrieves the complete list of products from the API.
    * @returns Promise<IProduct[]>
    * IMPORTANT: This method is supposed to be named #listProducts and be private. Unfortunately, 
@@ -63,6 +46,40 @@ class ProductService {
    */
   static #listFilters(products) {
     return ['All', ...new Set(products.map(p => Utilities.capitalizeWords(p.category))).values()];
+  }
+
+
+
+
+  /* **************
+   * MISC HELPERS *
+   ************** */
+
+  /**
+   * Filters a list of products based on the active filter.
+   * @param {*} products 
+   * @param {*} filter 
+   * @returns IProduct[]
+   */
+  static filterProducts(products, filter) {
+    if (Array.isArray(products)) {
+      if (filter === 'All') {
+        return products;
+      } else {
+        return products.filter((p) => p.category.toLowerCase() === filter.toLowerCase());
+      }
+    } else {
+      return [];
+    }
+  }
+
+  /**
+   * Prettifies a given dollar amount so it can be displayed to users.
+   * @param {*} amount 
+   * @returns string
+   */
+  static prettifyAmount(amount) {
+    return NumberUtilities.prettifyNumber(amount, { prefix: '$' });
   }
 }
 

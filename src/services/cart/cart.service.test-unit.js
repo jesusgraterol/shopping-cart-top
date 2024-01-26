@@ -267,22 +267,3 @@ describe('Cart Actions', () => {
     expect(CartService.prettyTotalQuantity).toEqual('9+');
   });
 });
-
-
-/**
- * Misc Helpers
- * Suite in charge of testing all the misc helpers within the service.
- */
-describe('Misc Helpers', () => {
-  beforeAll(() => { });
-
-  afterAll(() => { });
-
-  beforeEach(() => { });
-
-  afterEach(() => { });
-
-  test('can prettify a dollar amount', () => {
-    expect(CartService.prettifyAmount(7194556.3681)).toBe('$7,194,556.37');
-  });
-});

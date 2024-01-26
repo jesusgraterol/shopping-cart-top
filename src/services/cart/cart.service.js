@@ -199,15 +199,6 @@ class CartService {
   static #calculateItemAmount(price, quantity) {
     return NumberUtilities.buildNumber(NumberUtilities.getBigNumber(price).times(quantity));
   }
-
-  /**
-   * Prettifies a given dollar amount so it can be displayed to users.
-   * @param {*} amount 
-   * @returns string
-   */
-  static prettifyAmount(amount) {
-    return NumberUtilities.prettifyNumber(amount, { prefix: '$' });
-  }
 }
 
 
