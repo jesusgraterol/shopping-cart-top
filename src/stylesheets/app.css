@@ -29,6 +29,9 @@
 /* Dialog */
 @import url('modules/dialog.css');
 
+/* Spinner */
+@import url("modules/spinner.css");
+
 
 
 /* **********
@@ -37,8 +40,8 @@
 :root {
   --primary-color: #212121;
   --primary-contrast-color: #000000;
-  --accent-color: #212121;
-  --accent-contrast-color: #000000;
+  --accent-color: #333333;
+  --accent-contrast-color: #212121;
 
   --success-color: #0f766e;
   --error-color: #991b1b;
@@ -54,6 +57,9 @@
 
   --app-header-height: 85px;
   --app-header-height-mobile: 65px;
+
+  --app-section-header-height: 70px;
+  --app-section-header-height-mobile: 50px;
 }
 
 
@@ -117,6 +123,29 @@ strong {
 
 
 
+/* **************
+ * BUTTON BADGE *
+ ************** */
+.button-badge {
+  background-color: #474343;
+  color:white;
+  border-radius: 50%;
+  padding: 2px 5px;
+  font-size:0.7rem;
+  font-weight: bold;
+}
+
+
+
+/* *********
+ * SPINNER *
+ ********* */
+.spinner-container {
+  height: calc(100vh - var(--app-header-height));
+}
+
+
+
 
 
 /* ****************
@@ -155,18 +184,6 @@ body:has(dialog) {
 }
 
 
-
-/* **************
- * BUTTON BADGE *
- ************** */
-.button-badge {
-  background-color: #474343;
-  color:white;
-  border-radius: 50%;
-  padding: 2px 5px;
-  font-size:0.7rem;
-  font-weight: bold;
-}
 
 
 
@@ -258,6 +275,34 @@ body:has(dialog) {
 
 
 
+/* *****************
+ * SECTION HEADERS *
+ ***************** */
+#appContainer > main > section > header {
+  background-color: var(--accent-color);
+  box-shadow: 0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12), 0 1px 8px 0 rgba(0,0,0,0.20);
+  padding:15px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: var(--app-section-header-height);
+  position: relative;
+  color:white;
+}
+#appContainer > main > section > header h1 {
+  margin: 0;
+  color:white;
+  font-size: 1.5rem;
+}
+/* If the section has a secondary header - include it in the spinner container */
+#appContainer > main > section:has(header) .spinner-container {
+  height: calc(100vh - (var(--app-header-height) + var(--app-section-header-height)));
+}
+
+
+
+
+
 /* ******
  * HOME *
  ****** */
@@ -316,6 +361,28 @@ body:has(dialog) {
 
 
 
+/* **********
+ * PRODUCTS *
+ ********** */
+#productsContainer {
+
+}
+
+
+
+
+#productsContainer .error {
+  color: var(--error-color);
+  font-weight:bold;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 150px;
+}
+#productsContainer .error .md-icon {
+  vertical-align: middle;
+}
+
+
 
 /* **************************
  * RESPONSIVE MEDIA QUERIES *
@@ -352,6 +419,13 @@ body:has(dialog) {
 */
 @media (min-width: 768px) and (max-width: 1024px) {
 
+  /* *********
+   * SPINNER *
+   ********* */
+  .spinner-container {
+    height: calc(100vh - var(--app-header-height-mobile));
+  }
+
 
 
   /* ************
@@ -369,6 +443,22 @@ body:has(dialog) {
   }
   #appContainer > header nav .icon-btn {
     display:flex;
+  }
+
+
+
+
+  /* *****************
+   * SECTION HEADERS *
+   ***************** */
+  #appContainer > main > section > header {
+    height: var(--app-section-header-height-mobile);
+  }
+  #appContainer > main > section > header h1 {
+    font-size: 1.3rem;
+  }
+  #appContainer > main > section:has(header) .spinner-container {
+    height: calc(100vh - (var(--app-header-height-mobile) + var(--app-section-header-height-mobile)));
   }
 
 
@@ -414,6 +504,13 @@ body:has(dialog) {
 */
 @media (min-width: 481px) and (max-width: 767px) {
 
+  /* *********
+   * SPINNER *
+   ********* */
+  .spinner-container {
+    height: calc(100vh - var(--app-header-height-mobile));
+  }
+
 
   /* ************
    * APP HEADER *
@@ -430,6 +527,22 @@ body:has(dialog) {
   }
   #appContainer > header nav .icon-btn {
     display:flex;
+  }
+
+
+
+
+  /* *****************
+   * SECTION HEADERS *
+   ***************** */
+  #appContainer > main > section > header {
+    height: var(--app-section-header-height-mobile);
+  }
+  #appContainer > main > section > header h1 {
+    font-size: 1.3rem;
+  }
+  #appContainer > main > section:has(header) .spinner-container {
+    height: calc(100vh - (var(--app-header-height-mobile) + var(--app-section-header-height-mobile)));
   }
 
 
@@ -476,6 +589,16 @@ body:has(dialog) {
 */
 @media (max-width: 480px) {
 
+  /* *********
+   * SPINNER *
+   ********* */
+  .spinner-container {
+    height: calc(100vh - var(--app-header-height-mobile));
+  }
+
+
+
+
   /* ************
    * APP HEADER *
    ************ */
@@ -491,6 +614,22 @@ body:has(dialog) {
   }
   #appContainer > header nav .icon-btn {
     display:flex;
+  }
+
+
+
+
+  /* *****************
+   * SECTION HEADERS *
+   ***************** */
+  #appContainer > main > section > header {
+    height: var(--app-section-header-height-mobile);
+  }
+  #appContainer > main > section > header h1 {
+    font-size: 1.3rem;
+  }
+  #appContainer > main > section:has(header) .spinner-container {
+    height: calc(100vh - (var(--app-header-height-mobile) + var(--app-section-header-height-mobile)));
   }
 
 

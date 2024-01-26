@@ -6,7 +6,11 @@
 function Cart() {
 
   return (
-    <h1>Cart</h1>
+    <section>
+      <header>
+        <h1>Cart</h1>
+      </header>
+    </section>
   );
 }
 

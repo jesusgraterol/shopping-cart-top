@@ -8,7 +8,7 @@ function Home() {
   const navigate =  useNavigateApp();
 
   return (
-    <div id="homeContainer">
+    <section id="homeContainer">
 
       <div className="splash-container">
 
@@ -25,7 +25,7 @@ function Home() {
         </div>
       </div>
 
-    </div>
+    </section>
   );
 }
 
