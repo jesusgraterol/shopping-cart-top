@@ -21,6 +21,25 @@ class Utilities {
     ).join(' ');
   }
 
+  /**
+   * Truncates a given text based on a custom limit.
+   * @param {*} text 
+   * @param {*} limit 
+   * @param {?} suffix 
+   * @returns string
+   */
+  static truncateText(text, limit, suffix = '...') {
+    if (typeof text === 'string' && text.length) {
+      if (text.length > (limit + suffix.length)) {
+        return `${text.slice(0, limit)}${suffix}`;
+      } else { 
+        return text;
+      }
+    } else {
+      return '';
+    }
+  }
+
 
 
 

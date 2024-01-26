@@ -21,6 +21,12 @@ describe('String Manipulation Helpers', () => {
     expect(Utilities.capitalizeWords('women\'s clothing')).toBe('Women\'s Clothing');
     expect(Utilities.capitalizeWords('WOMEN\'s CLOTHING')).toBe('Women\'s Clothing');
   });
+
+  test('can truncate a given text', () => {
+    expect(Utilities.truncateText('Im a little tea pot', 10)).toBe('Im a littl...');
+    expect(Utilities.truncateText('Im a little tea pot', 5, '---')).toBe('Im a ---');
+    expect(Utilities.truncateText('Im a little tea pot', 20)).toBe('Im a little tea pot');
+  });
 });
 
 

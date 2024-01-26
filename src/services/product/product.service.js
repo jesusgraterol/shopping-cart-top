@@ -25,6 +25,24 @@ class ProductService {
   }
 
   /**
+   * Filters a list of products based on the active filter.
+   * @param {*} products 
+   * @param {*} filter 
+   * @returns IProduct[]
+   */
+  static filterProducts(products, filter) {
+    if (Array.isArray(products)) {
+      if (filter === 'All') {
+        return products;
+      } else {
+        return products.filter((p) => p.category.toLowerCase() === filter.toLowerCase());
+      }
+    } else {
+      return [];
+    }
+  }
+
+  /**
    * Retrieves the complete list of products from the API.
    * @returns Promise<IProduct[]>
    * IMPORTANT: This method is supposed to be named #listProducts and be private. Unfortunately, 

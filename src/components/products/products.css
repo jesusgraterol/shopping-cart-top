@@ -1,0 +1,125 @@
+/* **********
+ * PRODUCTS *
+ ********** */
+ #productsContainer {
+
+ }
+ 
+ 
+#productsContainer .error {
+  color: var(--error-color);
+  font-weight:bold;
+  font-size: 1.1rem;
+  text-align: center;
+  margin-top: 150px;
+}
+#productsContainer .error .md-icon {
+  vertical-align: middle;
+}
+ 
+
+#productsContainer .grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  padding:30px;
+}
+
+#productsContainer .grid article {
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 5px 0 rgba(0,0,0,0.14), 0 1px 10px 0 rgba(0,0,0,0.12), 0 2px 4px -1px rgba(0,0,0,0.20);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  animation: fadein 0.5s;
+}
+
+#productsContainer .grid article img {
+  max-width: 100%;
+  max-height: 200px;
+}
+
+#productsContainer .grid article h2 {
+  margin: 10px 0 0 0;
+  font-size: 1.2rem;
+}
+
+#productsContainer .grid article h3 {
+  margin: 15px 0 0 0;
+  font-size: 1.4rem;
+}
+
+#productsContainer .grid article p {
+  color: var(--light-text-color)
+}
+
+
+#productsContainer .grid article .btn {
+  width: 100%;
+}
+#productsContainer .grid article .btn:first-of-type {
+  margin-top:25px;
+}
+
+
+ /* **************************
+ * RESPONSIVE MEDIA QUERIES *
+ ************************** */
+
+/*
+ * DEVICE: Desktops
+ * SCREEN: 1281px to higher resolution desktops
+ */
+@media (min-width: 1281px) {
+
+}
+
+
+
+
+
+/*
+* DEVICE: Laptops, Desktops
+* SCREEN: B/w 1025px to 1280px
+*/
+@media (min-width: 1025px) and (max-width: 1280px) {
+
+}
+
+
+
+
+
+/*
+* DEVICE: Tablets, Ipads
+* SCREEN: B/w 768px to 1024px
+*/
+@media (min-width: 768px) and (max-width: 1024px) {
+
+}
+
+
+
+
+
+/*
+* DEVICE: Low Resolution Tablets, Mobiles (Landscape)
+* SCREEN: B/w 481px to 767px
+*/
+@media (min-width: 481px) and (max-width: 767px) {
+
+}
+
+
+
+
+
+/*
+* DEVICE: Most of the Smartphones Mobiles (Portrait)
+* SCREEN: 480px to lower resolution mobiles
+*/
+@media (max-width: 480px) {
+
+}

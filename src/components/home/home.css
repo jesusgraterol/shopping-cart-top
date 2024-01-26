@@ -1,0 +1,191 @@
+#homeContainer {
+  animation: fadein 0.5s;
+}
+
+#homeContainer .splash-container {
+  background-image: url('./splash.jpg');
+  background-size: cover;
+  background-position: center;
+  position:relative;
+}
+
+#homeContainer .splash-container .inner {
+  background-color: rgba(33, 33, 33, 0.7);
+  width: 100%;
+  height: calc(100vh - var(--app-header-height));
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color:#FFFFFF;
+  padding:15px;
+  text-align: center;
+}
+
+#homeContainer .splash-container .inner h1 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+
+#homeContainer .splash-container .inner h2 {
+  font-size: 4rem;
+  font-weight: 900;
+  margin: 15px 0;
+}
+
+#homeContainer .splash-container .inner p {
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+#homeContainer .splash-container .inner .btn {
+  margin-top:35px;
+  background-color: transparent;
+  border:2px solid #FFFFFF;
+}
+#homeContainer .splash-container .inner .btn:hover {
+  background-color: #000000;
+  border:2px solid #000000;
+}
+
+
+
+
+
+/* **************************
+ * RESPONSIVE MEDIA QUERIES *
+ ************************** */
+
+/*
+ * DEVICE: Desktops
+ * SCREEN: 1281px to higher resolution desktops
+ */
+ @media (min-width: 1281px) {
+
+ }
+ 
+ 
+ 
+ 
+ 
+ /*
+ * DEVICE: Laptops, Desktops
+ * SCREEN: B/w 1025px to 1280px
+ */
+ @media (min-width: 1025px) and (max-width: 1280px) {
+ 
+ 
+ }
+ 
+ 
+ 
+ 
+ 
+ /*
+ * DEVICE: Tablets, Ipads (portrait)
+ * SCREEN: B/w 768px to 1024px
+ */
+ @media (min-width: 768px) and (max-width: 1024px) {
+
+   #homeContainer .splash-container .inner {
+     height: calc(100vh - var(--app-header-height-mobile));
+ 
+   }
+   
+   #homeContainer .splash-container .inner h1 {
+     font-size: 2.2rem;
+   }
+   
+   #homeContainer .splash-container .inner h2 {
+     font-size: 3rem;
+     margin: 15px 0;
+   }
+   
+   #homeContainer .splash-container .inner p {
+     font-size: 1.3rem;
+     font-weight: 500;
+   }
+   
+   #homeContainer .splash-container .inner .btn {
+     margin-top:35px;
+   }
+ 
+ 
+ 
+ 
+ }
+ 
+ 
+ 
+ 
+ /*
+ * DEVICE: Low Resolution Tablets, Mobiles (Landscape)
+ * SCREEN: B/w 481px to 767px
+ */
+ @media (min-width: 481px) and (max-width: 767px) {
+ 
+   #homeContainer .splash-container .inner {
+     height: calc(100vh - var(--app-header-height-mobile));
+ 
+   }
+   
+   #homeContainer .splash-container .inner h1 {
+     font-size: 2.2rem;
+   }
+   
+   #homeContainer .splash-container .inner h2 {
+     font-size: 3rem;
+     margin: 15px 0;
+   }
+   
+   #homeContainer .splash-container .inner p {
+     font-size: 1.3rem;
+     font-weight: 500;
+   }
+   
+   #homeContainer .splash-container .inner .btn {
+     margin-top:35px;
+   }
+ 
+ 
+ 
+ 
+ }
+ 
+ 
+ 
+ 
+ 
+ /*
+ * DEVICE: Most of the Smartphones Mobiles (Portrait)
+ * SCREEN: 480px to lower resolution mobiles
+ */
+ @media (max-width: 480px) {
+
+   #homeContainer .splash-container .inner {
+     height: calc(100vh - var(--app-header-height-mobile));
+ 
+   }
+   
+   #homeContainer .splash-container .inner h1 {
+     font-size: 1.6rem;
+   }
+   
+   #homeContainer .splash-container .inner h2 {
+     font-size: 2.3rem;
+     margin: 15px 0;
+   }
+   
+   #homeContainer .splash-container .inner p {
+     font-size: 1rem;
+     font-weight: 500;
+   }
+   
+   #homeContainer .splash-container .inner .btn {
+     margin-top:35px;
+   }
+ 
+ 
+ }

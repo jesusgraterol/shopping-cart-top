@@ -1,4 +1,5 @@
 import useNavigateApp from '../../hooks/navigate-app/navigate-app.hook';
+import './home.css';
 
 /**
  * Home Component
