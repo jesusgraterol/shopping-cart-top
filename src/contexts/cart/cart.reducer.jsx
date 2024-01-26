@@ -1,7 +1,7 @@
-
-
-
-
+/**
+ * Cart Reducer
+ * Reducer in charge of handling cart changes that can take place in any component.
+ */
 function cartReducer(record, action) {
   switch(action.type) {
     case 'cart_changed': {

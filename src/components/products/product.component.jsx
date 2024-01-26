@@ -5,7 +5,7 @@ import Utilities from '../../services/shared/utilities/utilities.js';
 import ProductService from '../../services/product/product.service.js';
 import CartService from '../../services/cart/cart.service.js';
 import ProductModal from './product-modal.component.jsx';
-import { CartDispatchContext } from '../../context/cart/cart.context.jsx';
+import { CartDispatchContext } from '../../contexts/cart/cart.context.jsx';
 
 /**
  * Product Component
@@ -13,19 +13,13 @@ import { CartDispatchContext } from '../../context/cart/cart.context.jsx';
  */
 function Product({ product }) {
   const [modal, setModal] = useState(false);
-  const [ inCart, setInCart ] = useState(CartService.isProductInCart(product.id))
+  const [ inCart, setInCart ] = useState(CartService.isProductInCart(product.id));
   const dispatch = useContext(CartDispatchContext);
 
 
   const handleAddToCartClick = () => {
     CartService.add(product);
-    dispatch({
-      type: 'cart_changed',
-      totalQuantity: CartService.totalQuantity,
-      prettyTotalQuantity: CartService.prettyTotalQuantity,
-      totalAmount: CartService.totalAmount,
-      items: CartService.items
-    });
+    dispatch(CartService.reducerObject);
     setInCart(true);
   }
 

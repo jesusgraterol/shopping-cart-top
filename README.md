@@ -6,7 +6,9 @@ This application implements a fake online store which allows users to view produ
 
 The key features are:
 
-- ...
+- Ability to extract the products from an external API
+- Ability to filter products by category
+- Data persistance through the LocalStorage APi
 - Cross-Platform Compatibility
 
 
@@ -141,4 +143,5 @@ N/A
 - [React](https://react.dev/)
 - [prop-types](https://github.com/facebook/prop-types)
 - [bignumber.js](https://github.com/MikeMcl/bignumber.js)
+- [FakeStore API](https://fakestoreapi.com/)
 - [Unsplash/@rupixen](https://unsplash.com/photos/person-using-laptop-computer-holding-card-Q59HmzK38eQ)

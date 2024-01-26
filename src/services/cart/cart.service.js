@@ -36,7 +36,15 @@ class CartService {
     return Object.values(CartService.#record.items);
   }
 
-
+  static get reducerObject() {
+    return {
+      type: 'cart_changed',
+      totalQuantity: CartService.totalQuantity,
+      prettyTotalQuantity: CartService.prettyTotalQuantity,
+      totalAmount: CartService.totalAmount,
+      items: CartService.items
+    };
+  }
 
 
 

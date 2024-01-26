@@ -1,8 +1,8 @@
 
 import { useReducer } from 'react';
 import { Outlet } from 'react-router-dom';
-import {CartContext, CartDispatchContext} from '../context/cart/cart.context';
-import cartReducer from '../context/cart/cart.reducer';
+import {CartContext, CartDispatchContext} from '../contexts/cart/cart.context';
+import cartReducer from '../contexts/cart/cart.reducer';
 import Header from './header/header.component';
 import CartService from '../services/cart/cart.service';
 
@@ -13,7 +13,6 @@ function App() {
     totalAmount: CartService.totalAmount,
     items: CartService.items
   });
-
 
   return (
     <div id="appContainer">

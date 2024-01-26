@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react';
 import useActiveRoute from '../../hooks/active-route/active-route.hook';
 import useNavigateApp from '../../hooks/navigate-app/navigate-app.hook';
-import { CartContext } from '../../context/cart/cart.context';
+import { CartContext } from '../../contexts/cart/cart.context';
 import Sidenav from './sidenav.component';
 
 /**
