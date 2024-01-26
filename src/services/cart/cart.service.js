@@ -124,6 +124,15 @@ class CartService {
     CartService.#onCartChanges();
   }
 
+  /**
+   * Checks if a given product exists in the shopping cart.
+   * @param {*} productID 
+   * @returns boolean
+   */
+  static isProductInCart(productID) {
+    return productID in CartService.#record.items;
+  }
+
 
 
 

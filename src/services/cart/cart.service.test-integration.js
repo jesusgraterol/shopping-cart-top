@@ -32,10 +32,20 @@ describe('Cart Interactions', () => {
     // perform some actions
     const products = MOCK_PRODUCTS.slice(0, 4);
 
+    expect(CartService.isProductInCart(products[0].id)).toBe(false);
+    expect(CartService.isProductInCart(products[1].id)).toBe(false);
+    expect(CartService.isProductInCart(products[2].id)).toBe(false);
+    expect(CartService.isProductInCart(products[3].id)).toBe(false);
+
     CartService.add(products[0]);
     CartService.add(products[1]);
     CartService.add(products[2]);
     CartService.add(products[3]);
+
+    expect(CartService.isProductInCart(products[0].id)).toBe(true);
+    expect(CartService.isProductInCart(products[1].id)).toBe(true);
+    expect(CartService.isProductInCart(products[2].id)).toBe(true);
+    expect(CartService.isProductInCart(products[3].id)).toBe(true);
 
     CartService.increaseQuantity(products[0].id);
     CartService.increaseQuantity(products[0].id);
@@ -51,6 +61,8 @@ describe('Cart Interactions', () => {
 
     CartService.delete(products[3].id);
 
+    expect(CartService.isProductInCart(products[3].id)).toBe(false);
+
     // retrieve the db record and ensure the data is valid
     dbRecord = Database.read(DB_KEY);
     const items = CartService.items;
@@ -63,6 +75,5 @@ describe('Cart Interactions', () => {
         [items[2].product.id]: items[2],
       }
     });
-
   });
 });

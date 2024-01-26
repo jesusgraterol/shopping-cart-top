@@ -51,10 +51,13 @@ describe('Cart Actions', () => {
     const items = [];
     const products = MOCK_PRODUCTS.slice(0, 3);
 
+    expect(CartService.isProductInCart(products[0].id)).toBe(false);
+
     CartService.add(products[0]);
     expect(CartService.totalQuantity).toBe(1);
     expect(CartService.prettyTotalQuantity).toEqual('1');
     expect(CartService.totalAmount).toBe(products[0].price);
+    expect(CartService.isProductInCart(products[0].id)).toBe(true);
     items.push({ quantity: 1, amount: products[0].price, product: products[0]});
     expect(CartService.items).toEqual(items);
 
@@ -64,6 +67,7 @@ describe('Cart Actions', () => {
     expect(CartService.totalAmount).toBe(NumberUtilities.calculateSum(
       [products[0].price, products[1].price]
     ));
+    expect(CartService.isProductInCart(products[1].id)).toBe(true);
     items.push({ quantity: 1, amount: products[1].price, product: products[1]});
     expect(CartService.items).toEqual(items);
 
@@ -74,6 +78,7 @@ describe('Cart Actions', () => {
     expect(CartService.totalAmount).toBe(NumberUtilities.calculateSum(
       [products[0].price, products[1].price, products[2].price]
     ));
+    expect(CartService.isProductInCart(products[2].id)).toBe(true);
     items.push({ quantity: 1, amount: products[2].price, product: products[2]});
     expect(CartService.items).toEqual(items);
   });
@@ -90,6 +95,10 @@ describe('Cart Actions', () => {
     CartService.add(products[0]);
     CartService.add(products[1]);
     CartService.add(products[2]);
+
+    expect(CartService.isProductInCart(products[0].id)).toBe(true);
+    expect(CartService.isProductInCart(products[1].id)).toBe(true);
+    expect(CartService.isProductInCart(products[2].id)).toBe(true);
 
     expect(CartService.totalQuantity).toBe(3);
     expect(CartService.prettyTotalQuantity).toEqual('3');
@@ -137,6 +146,10 @@ describe('Cart Actions', () => {
     CartService.increaseQuantity(products[2].id);
     CartService.increaseQuantity(products[2].id);
     CartService.increaseQuantity(products[2].id);
+
+    expect(CartService.isProductInCart(products[0].id)).toBe(true);
+    expect(CartService.isProductInCart(products[1].id)).toBe(true);
+    expect(CartService.isProductInCart(products[2].id)).toBe(true);
 
     const increasedItem = CartService.items.find((item) => item.product.id === products[2].id);
     expect(increasedItem.quantity).toBe(4);
@@ -189,6 +202,7 @@ describe('Cart Actions', () => {
     expect(CartService.totalQuantity).toBe(1);
     expect(CartService.prettyTotalQuantity).toEqual('1');
     expect(CartService.totalAmount).toBe(products[0].price);
+    expect(CartService.isProductInCart(products[0].id)).toBe(true);
     expect(CartService.items).toEqual([
       { quantity: 1, amount: products[0].price, product: products[0] },
     ]);
@@ -197,6 +211,7 @@ describe('Cart Actions', () => {
     expect(CartService.totalQuantity).toBe(0);
     expect(CartService.prettyTotalQuantity).toEqual('0');
     expect(CartService.totalAmount).toBe(0);
+    expect(CartService.isProductInCart(products[0].id)).toBe(false);
     expect(CartService.items).toEqual([]);
   });
 
@@ -226,6 +241,10 @@ describe('Cart Actions', () => {
     expect(CartService.prettyTotalQuantity).toEqual('0');
     expect(CartService.totalAmount).toBe(0);
     expect(CartService.items).toEqual([]);
+
+    expect(CartService.isProductInCart(products[0].id)).toBe(false);
+    expect(CartService.isProductInCart(products[1].id)).toBe(false);
+    expect(CartService.isProductInCart(products[2].id)).toBe(false);
   });
 
   test('cannot delete an item that has not yet been added', () => {
